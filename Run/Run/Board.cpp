@@ -30,10 +30,11 @@ Board::Board(RenderWindow& window, Event& event, Snake& snake)
 
 void Board::setCellColor(int x, int y, Color c)
 {
-	if (x > 50 || x < 0 || y > 60 || y < 0) 
+	if (x > 50 || x < 0 || y > 50 || y < 0) 
 	{
 		this->gameOver();
 	}
+
 	map[x][y].setFillColor(c);
 }
 
@@ -53,6 +54,15 @@ void Board::update()
 	for (int i = 0; i < this->snake.getBody().size(); i++)
 	{
 		this->setCellColor(this->snake.getBody()[i].x, this->snake.getBody()[i].y, Color::White);
+	}
+
+	// check if snake hamhams it self
+	for(int i = 1; i < this->snake.getBody().size(); i++)
+	{
+		if (snake.getBody()[i] == snake.getHead()) 
+		{
+			this->gameOver();
+		}
 	}
 
 	// draw food

@@ -32,16 +32,24 @@ int WINAPI WinMain(HINSTANCE hThisInstance, HINSTANCE hPrevInstance, PSTR args, 
 				switch (event.key.code)
 				{
 				case Keyboard::Up:
-					dir = { -1, 0 };
+					if (dir != Vector2i(1, 0)) {
+						dir = { -1, 0 };
+					}
 					break;
 				case Keyboard::Down:
-					dir = { 1, 0 };
+					if (dir != Vector2i(-1, 0)) {
+						dir = { 1, 0 };
+					}
 					break;
 				case Keyboard::Left:
-					dir = {0, -1 };
+					if (dir != Vector2i(0, 1)) {
+						dir = { 0, -1 };
+					}
 					break;
 				case Keyboard::Right:
-					dir = { 0, 1 };
+					if (dir != Vector2i(0, -1)) {
+						dir = { 0, 1 };
+					}
 					break;
 				}
 
