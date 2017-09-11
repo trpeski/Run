@@ -15,9 +15,11 @@ public:
 	void move(int x, int y);
 	std::vector<Vector2i> getBody();
 	Vector2i getHead();
+	int getScore();
 	~Snake();
 private:
 	Vector2i head;
 	std::vector<Vector2i> body;
+	int score_int = 0;
 };
 

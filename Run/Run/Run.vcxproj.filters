@@ -36,4 +36,21 @@
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <Font Include="..\..\..\..\..\..\..\WINDOWS\Fonts\ARIAL.TTF">
+      <Filter>Resource Files</Filter>
+    </Font>
+    <Font Include="..\..\..\..\..\..\..\WINDOWS\Fonts\ARIBLK.TTF">
+      <Filter>Resource Files</Filter>
+    </Font>
+    <Font Include="..\..\..\..\..\..\..\WINDOWS\Fonts\ARIALBD.TTF">
+      <Filter>Resource Files</Filter>
+    </Font>
+    <Font Include="..\..\..\..\..\..\..\WINDOWS\Fonts\ARIALBI.TTF">
+      <Filter>Resource Files</Filter>
+    </Font>
+    <Font Include="..\..\..\..\..\..\..\WINDOWS\Fonts\ARIALI.TTF">
+      <Filter>Resource Files</Filter>
+    </Font>
+  </ItemGroup>
 </Project>

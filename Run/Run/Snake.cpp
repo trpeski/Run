@@ -12,6 +12,7 @@ Snake::Snake()
 
 void Snake::grow(Vector2i food_pos)
 {
+	this->score_int += 5;
 	this->body.push_back(food_pos);
 }
 
@@ -40,6 +41,11 @@ std::vector<Vector2i> Snake::getBody()
 Vector2i Snake::getHead()
 {
 	return this->head;
+}
+
+int Snake::getScore()
+{
+	return this->score_int;
 }
 
 

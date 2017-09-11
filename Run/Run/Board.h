@@ -24,5 +24,7 @@ private:
 	RenderWindow& window;
 	Event& event;
 	Vector2i food;
+	Font f;
+	Text score;
 };
 

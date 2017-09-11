@@ -1,11 +1,21 @@
 #include "Board.h"
 #include <assert.h>
 #include <windows.h>
+#include <thread>
+#include <sstream>
+
+using namespace std;
 
 
 Board::Board(RenderWindow& window, Event& event, Snake& snake) 
 	: window(window), event(event), snake(snake)
 {
+	f.loadFromFile("ARIAL.TTF");
+	score.setFont(f);
+	score.setPosition(250, 10);
+	score.setCharacterSize(15);
+	score.setColor(Color::Blue);
+
 	int pos_x = 0;
 	int pos_y = 0;
 
@@ -40,7 +50,7 @@ void Board::setCellColor(int x, int y, Color c)
 
 void Board::update()
 {
-
+	
 	// clear
 	for (int i = 0; i < NUMBER_OF_CELLS; i++)
 	{
@@ -57,6 +67,7 @@ void Board::update()
 	}
 
 	// check if snake hamhams it self
+	
 	for(int i = 1; i < this->snake.getBody().size(); i++)
 	{
 		if (snake.getBody()[i] == snake.getHead()) 
@@ -69,12 +80,24 @@ void Board::update()
 	map[food.x][food.y].setFillColor(Color::Red);
 	
 	// check if snake hamhams the food
-	if (this->snake.getHead().x == this->food.x && this->snake.getHead().y == this->food.y) 
-	{
-		this->snake.grow(food);
-		food.x = rand() % 50;
-		food.y = rand() % 50;
-	}
+	
+
+	
+		
+		if (this->snake.getHead().x == this->food.x && this->snake.getHead().y == this->food.y)
+		{
+			this->snake.grow(food);
+			stringstream ss;
+			ss << this->snake.getScore();
+			this->score.setString(String(ss.str().c_str()));
+			ss.clear();
+			food.x = rand() % 50;
+			food.y = rand() % 50;
+		}
+	
+
+	
+
 }
 
 void Board::draw()
@@ -89,12 +112,19 @@ void Board::draw()
 		}
 	}
 	
+	window.draw(this->score); 
+
 	this->window.display();
 }
 
 void Board::gameOver()
 {
 	this->window.setTitle("GAME OVER !");
+	this->window.clear();
+	this->score.setPosition(50, 10);
+	this->score.setCharacterSize(100);
+	this->window.draw(score);
+	this->window.display();
 	Sleep(2000);
 	this->window.close();
 	exit(0);
